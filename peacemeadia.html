@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peace Media</title>
+    <link rel="stylesheet" href="peacestyle.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="header-actions">
+                <a href="#login" class="button-outline" id="header-auth-button">Login</a>
+            </div>
+            <div class="brand-group">
+                <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Circle background -->
+                    <circle cx="60" cy="60" r="55" fill="none" stroke="#CC2C2C" stroke-width="2"/>
+                    <circle cx="60" cy="60" r="48" fill="none" stroke="#00D9FF" stroke-width="1" opacity="0.6"/>
+                    
+                    <!-- Camera lens -->
+                    <circle cx="60" cy="50" r="18" fill="none" stroke="#00D9FF" stroke-width="2"/>
+                    <circle cx="60" cy="50" r="12" fill="none" stroke="#CC2C2C" stroke-width="1.5"/>
+                    <circle cx="60" cy="50" r="6" fill="#CC2C2C"/>
+                    
+                    <!-- Peace symbol (dove wings) -->
+                    <path d="M 40 70 Q 35 75 30 80" fill="none" stroke="#00D9FF" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M 80 70 Q 85 75 90 80" fill="none" stroke="#00D9FF" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <!-- Center peace mark -->
+                    <circle cx="60" cy="85" r="3" fill="#00D9FF"/>
+                    <path d="M 60 85 L 60 95" stroke="#00D9FF" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <div class="brand-text">
+                    <div class="brand-mark">Peace Media</div>
+                    <p>Creative media services in Kirehe, near Sun City Hotel.</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#gallery">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="theme-switcher">
+                <button type="button" class="theme-button active" data-theme="normal">Normal</button>
+                <button type="button" class="theme-button" data-theme="white">White</button>
+                <button type="button" class="theme-button" data-theme="dark">Dark</button>
+                <button type="button" class="theme-button" data-theme="night">Night</button>
+            </div>
+        </div>
+
+        <div class="hero container">
+            <div class="hero-copy">
+                <span class="eyebrow">Professional Media Production</span>
+                <h1>Crafting compelling visuals for your brand, events, and business.</h1>
+                <p>From photography and video production to branding and digital marketing, Peace Media helps your message stand out with a premium creative experience.</p>
+                <div class="hero-actions">
+                    <a href="#signup" class="button-primary">Get Started</a>
+                    <a href="#gallery" class="button-secondary">View Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Member Home Page -->
+    <section class="member-home hidden" id="member-home">
+        <div class="container">
+            <div class="member-home-inner">
+                <div class="home-actions">
+                    <span class="eyebrow">Your Peace Media Home</span>
+                    <h2 id="member-name">Welcome back, Member</h2>
+                    <p class="account-summary">You are signed in and can now access your account, exclusive services, videos, and personalized offers.</p>
+                    <p><strong>Email:</strong> <span id="member-email"></span></p>
+                    <p><strong>Member Status:</strong> Active</p>
+                    <div class="home-buttons">
+                        <a href="#services" class="button-primary">Browse Services</a>
+                        <a href="#gallery" class="button-secondary">View Gallery</a>
+                        <a href="#videos" class="button-secondary">Watch Videos</a>
+                        <a href="#" class="button-secondary" id="logout-button">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Details Wizard (Top Right) -->
+        <div class="account-wizard">
+            <div class="wizard-close" id="wizard-close">×</div>
+            <div class="account-card-wizard">
+                <div class="account-avatar-wizard" id="account-avatar-wizard">
+                    <span id="account-initial-wizard">P</span>
+                    <img id="account-photo-wizard" src="" alt="Account photo" style="display:none;">
+                </div>
+                <div class="account-info-wizard">
+                    <h3 id="account-name-wizard">Peace Media User</h3>
+                    <p id="account-email-wizard">you@example.com</p>
+                    <p class="account-role-wizard">Standard Member</p>
+                </div>
+            </div>
+
+            <div class="account-settings">
+                <h3>Account Settings</h3>
+                <div class="settings-tabs">
+                    <button class="tab-button active" data-tab="basic">Basic Info</button>
+                    <button class="tab-button" data-tab="security">Security</button>
+                    <button class="tab-button" data-tab="activity">Activity</button>
+                    <button class="tab-button" data-tab="danger">Danger Zone</button>
+                </div>
+
+                        <!-- Basic Info Tab -->
+                        <div class="tab-content active" id="tab-basic">
+                            <h4>Basic Information</h4>
+                            <form id="profile-form">
+                                <div class="form-group">
+                                    <label for="profile-name">Display Name</label>
+                                    <input type="text" id="profile-name" placeholder="Your Name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profile-photo-url">Profile Photo URL</label>
+                                    <input type="url" id="profile-photo-url" placeholder="https://example.com/photo.jpg">
+                                    <p class="help-text">Add a photo to make your account more personal</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recovery-email">Recovery Email <span class="optional-label">(optional)</span></label>
+                                    <input type="email" id="recovery-email" placeholder="your-recovery@example.com">
+                                    <p class="help-text">Used to recover your account if you lose access</p>
+                                </div>
+
+                                <button type="submit" class="button-primary">Save Changes</button>
+                            </form>
+                        </div>
+
+                        <!-- Security Tab -->
+                        <div class="tab-content" id="tab-security">
+                            <h4>Security Settings</h4>
+                            
+                            <div class="security-section">
+                                <div class="security-item">
+                                    <div class="security-info">
+                                        <h5>Password</h5>
+                                        <p>Change your password to keep your account secure</p>
+                                    </div>
+                                    <button type="button" class="button-secondary" id="change-password-btn">Change Password</button>
+                                </div>
+
+                                <div class="security-item">
+                                    <div class="security-info">
+                                        <h5>Two-Factor Authentication</h5>
+                                        <p>Add an extra layer of security to your account</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="twofa-toggle">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="security-item">
+                                    <div class="security-info">
+                                        <h5>Login Notifications</h5>
+                                        <p>Get notified when someone logs into your account</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="login-notify-toggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <form id="password-form" class="hidden">
+                                <h5>Change Your Password</h5>
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" placeholder="Enter current password" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" placeholder="Create a new password" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm Password</label>
+                                    <input type="password" id="confirm-password" placeholder="Confirm new password" required>
+                                </div>
+
+                                <div class="button-group">
+                                    <button type="submit" class="button-primary">Update Password</button>
+                                    <button type="button" class="button-secondary" id="cancel-password-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Activity Tab -->
+                        <div class="tab-content" id="tab-activity">
+                            <h4>Recent Activity</h4>
+                            <div id="activity-log" class="activity-log">
+                                <div class="activity-item">
+                                    <div class="activity-icon">✓</div>
+                                    <div class="activity-details">
+                                        <p class="activity-action">Account Created</p>
+                                        <p class="activity-time">Just now</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="button-secondary" id="clear-activity-btn">Clear Activity Log</button>
+                        </div>
+
+                        <!-- Danger Zone Tab -->
+                        <div class="tab-content" id="tab-danger">
+                            <h4>Danger Zone</h4>
+                            
+                            <div class="danger-section">
+                                <div class="danger-item">
+                                    <div class="danger-info">
+                                        <h5>Export Your Data</h5>
+                                        <p>Download a copy of your account data</p>
+                                    </div>
+                                    <button type="button" class="button-secondary" id="export-data-btn">Export Data</button>
+                                </div>
+
+                                <div class="danger-item">
+                                    <div class="danger-info">
+                                        <h5>Delete Account</h5>
+                                        <p>Permanently delete your account and all associated data</p>
+                                    </div>
+                                    <button type="button" class="button-danger" id="delete-account-btn">Delete Account</button>
+                                </div>
+
+                                <div class="danger-item">
+                                    <div class="danger-info">
+                                        <h5>Logout All Devices</h5>
+                                        <p>Sign out from all active sessions</p>
+                                    </div>
+                                    <button type="button" class="button-secondary" id="logout-all-btn">Logout All</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Section -->
+    <section class="auth" id="login">
+        <div class="container auth-grid">
+            <div class="auth-card">
+                <h2>Login</h2>
+                <p>Access your account to manage requests, messages, and bookings.</p>
+                <form id="login-form">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="you@example.com" required>
+
+                        <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Password" required>
+
+                    <label class="checkbox-label"><input type="checkbox" id="remember-me"> Remember me</label>
+
+                    <button type="submit">Login</button>
+                    <div class="code-block" id="code-block" style="display:none;">
+                        <label for="login-code">Verification Code</label>
+                        <input type="text" id="login-code" placeholder="Enter code sent to your email">
+                        <button type="button" id="verify-code-button">Verify Code</button>
+                        <p class="small-note" id="code-note">A code will be sent to your email after login.</p>
+                    </div>
+                    <p class="small-note" id="login-status">Save your account to log in faster next time.</p>
+                </form>
+            </div>
+
+            <div class="auth-card" id="signup">
+                <h2>Sign Up</h2>
+                <p>Create a new account for special offers and faster service.</p>
+                <form id="signup-form">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Your Name" required>
+
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="you@example.com" required>
+
+                    <label for="signup-photo">Profile Photo URL <span class="optional-label">(optional)</span></label>
+                    <input type="url" id="signup-photo" placeholder="https://example.com/photo.jpg">
+
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create password" required>
+
+                    <button type="submit">Sign Up</button>
+                    <p class="small-note">After signing up, click the verification link below to complete registration.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Section -->
+    <section class="verification" id="verify">
+        <div class="container">
+            <h2>Verify Your Email</h2>
+            <p>Click the button below to verify your account and finish setting up your Peace Media profile.</p>
+            <a class="verify-link" href="https://example.com/verify?token=123456" target="_blank" rel="noopener">Verify My Account</a>
+            <p class="small-note">If you do not receive the verification email, check your spam folder or <a href="mailto:peacemedia@gmail.com">contact support</a>.</p>
+        </div>
+    </section>
+
+    <!-- Member Dashboard -->
+    <section class="member-dashboard hidden" id="member-dashboard">
+        <div class="container">
+            <h2>Member Dashboard</h2>
+            <p>Welcome to your Peace Media member area. Here are extra tools and offers available after login.</p>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Exclusive Offers</h3>
+                    <p>Receive members-only discounts on shoots, editing packages, and branding services.</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Saved Requests</h3>
+                    <p>Track your favorite service requests and quickly book follow-up sessions.</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Portfolio Access</h3>
+                    <p>View extra moments, videos, and behind-the-scenes stories from our latest projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Benefits Section (For Non-Members) -->
+    <section class="membership-benefits" id="membership-benefits">
+        <div class="container">
+            <div class="benefits-header">
+                <h2>Why Join Peace Media?</h2>
+                <p>Unlock exclusive benefits and premium features available only to members</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Exclusive Discounts</h3>
+                    <p>Get member-only discounts on all photography, videography, and design services. Save up to 30% on premium packages.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎬</div>
+                    <h3>Portfolio Access</h3>
+                    <p>Browse our complete portfolio with behind-the-scenes content, client testimonials, and project galleries.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Priority Booking</h3>
+                    <p>Get priority scheduling for your shoots and events. Members book slots 3 weeks in advance.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Personalized Offers</h3>
+                    <p>Receive customized service recommendations and special offers based on your preferences.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔐</div>
+                    <h3>Secure Dashboard</h3>
+                    <p>Manage your profile, track bookings, and store important documents in your personal account.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3>Dedicated Support</h3>
+                    <p>Access priority customer support and get assistance from our team within 2 hours.</p>
+                </div>
+            </div>
+
+            <div class="membership-cta">
+                <h3>Join Our Growing Community</h3>
+                <p>Over 500+ members already enjoying exclusive benefits and premium services</p>
+                <a href="#signup" class="button-primary button-large">Create Your Free Account</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Perks Section -->
+    <section class="member-perks">
+        <div class="container">
+            <h2>What Members Are Saying</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The member discount alone saved me 40% on my wedding photography package. Highly recommend!"</p>
+                    <p class="testimonial-author">- Sarah K., Member since 2025</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Amazing portfolio and professional team. They delivered our corporate video in record time!"</p>
+                    <p class="testimonial-author">- James M., Business Owner</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Priority booking was a game-changer. I got my preferred date instantly!"</p>
+                    <p class="testimonial-author">- Emily R., Event Planner</p>
+                </div>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-box">
+                    <h4>500+</h4>
+                    <p>Active Members</p>
+                </div>
+                <div class="stat-box">
+                    <h4>1,200+</h4>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-box">
+                    <h4>98%</h4>
+                    <p>Satisfaction Rate</p>
+                </div>
+                <div class="stat-box">
+                    <h4>24/7</h4>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>
+                Peace Media is a creative media company located in Kirehe District near Sun City Hotel.
+                We provide photography, videography, graphic design, branding, and digital marketing services.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+
+            <div class="service-box">
+                <h3>Photo Services</h3>
+                <p>Professional photography for events, portraits, weddings, and commercial projects.</p>
+            </div>
+
+            <div class="service-box">
+                <h3>Video Services</h3>
+                <p>Creative video shooting, editing, and storytelling for brands and campaigns.</p>
+            </div>
+
+            <div class="service-box">
+                <h3>Graphic Design</h3>
+                <p>Logo design, posters, flyers, and social media graphics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+
+            <div class="gallery-images">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop" alt="Commercial Media Shoot">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Studio Photography">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Video Production Crew">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Peace Media Branding">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="Creative Campaign Design">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Peace Media Team Collaboration">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p><strong>Location:</strong> Kirehe near Sun City Hotel</p>
+            <p><strong>Phone:</strong> +250 783 008 841</p>
+            <p><strong>Email:</strong> peacemedia@gmail.com</p>
+            <div class="map-container">
+                <iframe class="map-frame" src="https://www.google.com/maps?q=Kirehe+Sun+City+Hotel,+Rwanda&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Peace Media. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const signupForm = document.getElementById('signup-form');
+        const loginForm = document.getElementById('login-form');
+        const loginStatus = document.getElementById('login-status');
+        const savedAccount = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+
+        function displayStatus(message, color) {
+            loginStatus.textContent = message;
+            loginStatus.style.color = color;
+        }
+
+        function setTheme(themeName) {
+            const themeClasses = ['theme-normal', 'theme-white', 'theme-dark', 'theme-night'];
+            document.body.classList.remove(...themeClasses);
+            document.body.classList.add(`theme-${themeName}`);
+            localStorage.setItem('peaceMediaTheme', themeName);
+            document.querySelectorAll('.theme-button').forEach(button => {
+                button.classList.toggle('active', button.dataset.theme === themeName);
+            });
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('peaceMediaTheme') || 'normal';
+            setTheme(savedTheme);
+            document.querySelectorAll('.theme-button').forEach(button => {
+                button.addEventListener('click', () => setTheme(button.dataset.theme));
+            });
+        }
+
+        function showMemberDashboard() {
+            document.getElementById('member-dashboard').classList.remove('hidden');
+        }
+
+        function resetToLanding() {
+            document.getElementById('member-home').classList.add('hidden');
+            document.getElementById('member-dashboard').classList.add('hidden');
+            document.getElementById('verify').classList.remove('hidden');
+            document.querySelector('.auth').classList.remove('hidden');
+            document.querySelector('.hero').classList.remove('hidden');
+            document.querySelector('.auth-links').classList.remove('hidden');
+            document.getElementById('code-block').style.display = 'none';
+            updateHeaderAuthButton();
+        }
+
+        function populateProfileForm(account) {
+            const profileName = document.getElementById('profile-name');
+            const profilePhoto = document.getElementById('profile-photo-url');
+            const recoveryEmail = document.getElementById('recovery-email');
+            if (profileName) profileName.value = account.name || '';
+            if (profilePhoto) profilePhoto.value = account.photo || '';
+            if (recoveryEmail) recoveryEmail.value = account.recoveryEmail || '';
+            
+            const twoFA = document.getElementById('twofa-toggle');
+            const loginNotify = document.getElementById('login-notify-toggle');
+            if (twoFA) twoFA.checked = account.twoFA || false;
+            if (loginNotify) loginNotify.checked = account.loginNotify !== false;
+        }
+
+        function addActivityLog(action) {
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            if (!saved) return;
+            
+            if (!saved.activity) saved.activity = [];
+            saved.activity.push({
+                action: action,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Keep only last 20 activities
+            if (saved.activity.length > 20) saved.activity.shift();
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+            refreshActivityLog();
+        }
+
+        function refreshActivityLog() {
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            const activityLog = document.getElementById('activity-log');
+            if (!activityLog) return;
+            
+            if (!saved.activity || saved.activity.length === 0) {
+                activityLog.innerHTML = '<p class="no-activity">No recent activity</p>';
+                return;
+            }
+            
+            activityLog.innerHTML = saved.activity.reverse().map((item, idx) => {
+                const date = new Date(item.timestamp);
+                const timeAgo = getTimeAgo(date);
+                return `
+                    <div class="activity-item">
+                        <div class="activity-icon">✓</div>
+                        <div class="activity-details">
+                            <p class="activity-action">${item.action}</p>
+                            <p class="activity-time">${timeAgo}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            if (seconds < 60) return 'Just now';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes}m ago`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours}h ago`;
+            const days = Math.floor(hours / 24);
+            return `${days}d ago`;
+        }
+
+        function showMemberHome(account) {
+            document.getElementById('member-home').classList.remove('hidden');
+            document.getElementById('member-dashboard').classList.remove('hidden');
+            document.getElementById('verify').classList.add('hidden');
+            document.querySelector('.auth').classList.add('hidden');
+            document.querySelector('.hero').classList.add('hidden');
+            document.querySelector('.auth-links').classList.add('hidden');
+            document.getElementById('member-name').textContent = `Welcome back, ${account.name}`;
+            document.getElementById('member-email').textContent = account.email;
+            
+            // Update wizard account info
+            document.getElementById('account-name-wizard').textContent = account.name;
+            document.getElementById('account-email-wizard').textContent = account.email;
+            
+            const photoWizard = document.getElementById('account-photo-wizard');
+            const initialWizard = document.getElementById('account-initial-wizard');
+            if (account.photo) {
+                photoWizard.src = account.photo;
+                photoWizard.style.display = 'block';
+                initialWizard.style.display = 'none';
+            } else {
+                photoWizard.style.display = 'none';
+                initialWizard.textContent = account.name ? account.name.charAt(0).toUpperCase() : 'P';
+                initialWizard.style.display = 'flex';
+            }
+            
+            populateProfileForm(account);
+            showMemberDashboard();
+            updateHeaderAuthButton();
+        }
+
+        function logout() {
+            localStorage.setItem('peaceMediaLoggedIn', 'false');
+            resetToLanding();
+            window.location.hash = '#login';
+        }
+
+        function setLoggedInState(account) {
+            localStorage.setItem('peaceMediaLoggedIn', 'true');
+            showMemberHome(account);
+        }
+
+        initTheme();
+
+        if (savedAccount) {
+            document.getElementById('login-email').value = savedAccount.email;
+            document.getElementById('login-password').value = savedAccount.password;
+            displayStatus(`Saved account found for ${savedAccount.name}. Use your details to log in.`, '#0f4f8f');
+            if (localStorage.getItem('peaceMediaLoggedIn') === 'true') {
+                showMemberHome(savedAccount);
+            } else {
+                resetToLanding();
+            }
+        } else {
+            resetToLanding();
+        }
+
+        // Header login/logout button logic
+        const headerAuthButton = document.getElementById('header-auth-button');
+        function updateHeaderAuthButton() {
+            const loggedIn = localStorage.getItem('peaceMediaLoggedIn') === 'true';
+            if (loggedIn) {
+                headerAuthButton.textContent = 'Logout';
+                headerAuthButton.href = '#';
+                headerAuthButton.onclick = function(e) {
+                    e.preventDefault();
+                    logout();
+                };
+            } else {
+                headerAuthButton.textContent = 'Login';
+                headerAuthButton.href = '#login';
+                headerAuthButton.onclick = null;
+            }
+        }
+        updateHeaderAuthButton();
+        window.addEventListener('storage', updateHeaderAuthButton);
+
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const account = {
+                name: document.getElementById('signup-name').value.trim(),
+                email: document.getElementById('signup-email').value.trim(),
+                photo: document.getElementById('signup-photo').value.trim(),
+                password: document.getElementById('signup-password').value.trim(),
+                recoveryEmail: '',
+                twoFA: false,
+                loginNotify: true,
+                activity: [{
+                    action: 'Account created',
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(account));
+            localStorage.setItem('peaceMediaLoggedIn', 'true');
+            displayStatus('Account created and signed in successfully.', '#047857');
+            showMemberHome(account);
+            signupForm.reset();
+            refreshActivityLog();
+        });
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            const rememberMe = document.getElementById('remember-me').checked;
+            const codeBlock = document.getElementById('code-block');
+            const codeInput = document.getElementById('login-code');
+
+            if (!saved) {
+                displayStatus('No saved account found. Please sign up first.', '#991b1b');
+                return;
+            }
+
+            if (saved.email === email && saved.password === password) {
+                const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+                const codeData = { code: verificationCode, email: saved.email, expires: Date.now() + 5 * 60 * 1000 };
+                localStorage.setItem('peaceMediaLoginCode', JSON.stringify(codeData));
+                codeBlock.style.display = 'block';
+                codeInput.value = '';
+                document.getElementById('code-note').textContent = `A verification code was sent to ${saved.email}. Enter the code from your email.`;
+                displayStatus(`Verification code sent to ${saved.email}. Enter it below to complete login.`, '#047857');
+                if (rememberMe) {
+                    localStorage.setItem('peaceMediaRemembered', 'true');
+                }
+            } else {
+                displayStatus('Email or password does not match the saved account.', '#991b1b');
+            }
+        });
+
+        document.getElementById('verify-code-button').addEventListener('click', function() {
+            const savedCodeData = JSON.parse(localStorage.getItem('peaceMediaLoginCode') || 'null');
+            const enteredCode = document.getElementById('login-code').value.trim();
+
+            if (!savedCodeData) {
+                displayStatus('No login code found. Please log in again to request a code.', '#991b1b');
+                return;
+            }
+
+            if (Date.now() > savedCodeData.expires) {
+                displayStatus('The verification code has expired. Please log in again to get a new code.', '#991b1b');
+                return;
+            }
+
+            if (enteredCode === savedCodeData.code) {
+                displayStatus('Login verified successfully! You are now signed in.', '#047857');
+                alert('Login verified and completed successfully.');
+                document.getElementById('code-block').style.display = 'none';
+                document.getElementById('login-code').value = '';
+                localStorage.setItem('peaceMediaLoggedIn', 'true');
+                const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+                if (saved) {
+                    addActivityLog('Logged in successfully');
+                    showMemberHome(saved);
+                    refreshActivityLog();
+                }
+            } else {
+                displayStatus('Incorrect verification code. Please try again.', '#991b1b');
+            }
+        });
+
+        document.getElementById('profile-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            if (!saved) {
+                displayStatus('No saved account found. Please sign up again.', '#991b1b');
+                return;
+            }
+            saved.name = document.getElementById('profile-name').value.trim() || saved.name;
+            saved.photo = document.getElementById('profile-photo-url').value.trim();
+            saved.recoveryEmail = document.getElementById('recovery-email').value.trim();
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+            addActivityLog('Updated profile information');
+            displayStatus('Profile updated successfully.', '#047857');
+            showMemberHome(saved);
+        });
+
+        // Wizard close button
+        const wizardClose = document.getElementById('wizard-close');
+        if (wizardClose) {
+            wizardClose.addEventListener('click', function() {
+                const wizard = document.querySelector('.account-wizard');
+                if (wizard) {
+                    wizard.style.animation = 'slideOutRight 0.4s ease';
+                    setTimeout(() => {
+                        wizard.style.display = 'none';
+                    }, 400);
+                }
+            });
+        }
+
+        // Tab switching functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const tabContent = document.getElementById(`tab-${tabName}`);
+                if (tabContent) tabContent.classList.add('active');
+            });
+        });
+
+        // Security: Change Password
+        document.getElementById('change-password-btn').addEventListener('click', function() {
+            document.getElementById('password-form').classList.remove('hidden');
+            this.style.display = 'none';
+        });
+
+        document.getElementById('cancel-password-btn').addEventListener('click', function() {
+            document.getElementById('password-form').classList.add('hidden');
+            document.getElementById('change-password-btn').style.display = 'block';
+            document.getElementById('password-form').reset();
+        });
+
+        document.getElementById('password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            const currentPassword = document.getElementById('current-password').value.trim();
+            const newPassword = document.getElementById('new-password').value.trim();
+            const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+            if (currentPassword !== saved.password) {
+                displayStatus('Current password is incorrect.', '#991b1b');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                displayStatus('New passwords do not match.', '#991b1b');
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                displayStatus('Password must be at least 6 characters.', '#991b1b');
+                return;
+            }
+
+            saved.password = newPassword;
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+            addActivityLog('Changed password');
+            displayStatus('Password updated successfully.', '#047857');
+            document.getElementById('password-form').classList.add('hidden');
+            document.getElementById('change-password-btn').style.display = 'block';
+            this.reset();
+        });
+
+        // Security: 2FA Toggle
+        document.getElementById('twofa-toggle').addEventListener('change', function() {
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            saved.twoFA = this.checked;
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+            const status = this.checked ? 'enabled' : 'disabled';
+            addActivityLog(`Two-factor authentication ${status}`);
+            displayStatus(`Two-factor authentication ${status}.`, '#047857');
+        });
+
+        // Security: Login Notifications Toggle
+        document.getElementById('login-notify-toggle').addEventListener('change', function() {
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            saved.loginNotify = this.checked;
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+            displayStatus(`Login notifications ${this.checked ? 'enabled' : 'disabled'}.`, '#047857');
+        });
+
+        // Activity: Clear Log
+        document.getElementById('clear-activity-btn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear all activity logs? This action cannot be undone.')) {
+                const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+                saved.activity = [];
+                localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+                refreshActivityLog();
+                displayStatus('Activity log cleared.', '#047857');
+            }
+        });
+
+        // Export Data
+        document.getElementById('export-data-btn').addEventListener('click', function() {
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            const dataStr = JSON.stringify(saved, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `peace-media-account-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            addActivityLog('Exported account data');
+            displayStatus('Account data exported successfully.', '#047857');
+        });
+
+        // Delete Account
+        document.getElementById('delete-account-btn').addEventListener('click', function() {
+            if (confirm('Are you REALLY sure? This will permanently delete your account and all data. This cannot be undone.')) {
+                if (confirm('This is your last chance. Confirm deletion?')) {
+                    localStorage.removeItem('peaceMediaAccount');
+                    localStorage.removeItem('peaceMediaLoggedIn');
+                    localStorage.removeItem('peaceMediaLoginCode');
+                    displayStatus('Account deleted.', '#047857');
+                    logout();
+                }
+            }
+        });
+
+        // Logout All Devices
+        document.getElementById('logout-all-btn').addEventListener('click', function() {
+            const saved = JSON.parse(localStorage.getItem('peaceMediaAccount') || 'null');
+            saved.lastLogout = new Date().toISOString();
+            localStorage.setItem('peaceMediaAccount', JSON.stringify(saved));
+            addActivityLog('Logged out from all devices');
+            displayStatus('You have been logged out from all devices.', '#047857');
+            logout();
+        });
+    </script>
+</body>
+</html>
+
+
